@@ -1,0 +1,36 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http;
+using ServerSide.Models;
+using System.Web.Http.Cors;
+using System.Diagnostics;
+
+namespace ServerSide.Controllers
+{
+    public class SensorsController : ApiController
+    {
+        public static double sensorData = 22.11;
+
+        Sensor[] sensors = new Sensor[]
+        {
+            new Sensor {Temperature = sensorData}
+        };
+
+        [HttpGet]
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
+        public IEnumerable<Sensor> Retrieve()
+        {
+            return sensors;
+        }
+
+        [HttpGet]
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
+        public void Update()
+        {
+            sensorData = 58.43;
+        }
+    }
+}
