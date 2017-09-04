@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
 
-namespace ServerSide
+namespace ThermalChamberWebApp
 {
     public static class WebApiConfig
     {
@@ -14,11 +14,6 @@ namespace ServerSide
 
             // Web API routes
             config.MapHttpAttributeRoutes();
-
-            config.Routes.MapHttpRoute(
-                name: "DefaultApi",
-                routeTemplate: "api/{controller}/{action}", defaults: new { id = RouteParameter.Optional }
-            );
         }
     }
 }
