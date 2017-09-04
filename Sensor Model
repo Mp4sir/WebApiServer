@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace ServerSide.Models
+namespace ThermalChamberWebApp.Models
 {
     public class Sensor
     {
+        public string Id { get; set; }
         public double Temperature { get; set; }
     }
 }
