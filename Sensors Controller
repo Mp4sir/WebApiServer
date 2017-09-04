@@ -4,21 +4,32 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using ServerSide.Models;
-using System.Web.Http.Cors;
-using System.Diagnostics;
 
-namespace ServerSide.Controllers
+using System.Web.Http.Cors;
+using ThermalChamberWebApp.Models;
+
+namespace ThermalChamberWebApp.Controllers
 {
     public class SensorsController : ApiController
     {
-        public static double sensorData = 22.11;
+        public static double sensorData1 = 0;
+        public static double sensorData2 = 0;
+        public static double sensorData3 = 0;
+        public static double sensorData4 = 0;
+        public static double sensorData5 = 0;
+        public static double sensorData6 = 0;
 
         Sensor[] sensors = new Sensor[]
         {
-            new Sensor {Temperature = sensorData}
+            new Sensor {Id = "Top Left (0x18)", Temperature = sensorData1},
+            new Sensor {Id = "Top Right (0x19)", Temperature = sensorData2},
+            new Sensor {Id = "Middle Right (0x1A)", Temperature = sensorData3},
+            new Sensor {Id = "Middle Left (0x1B)", Temperature = sensorData4},
+            new Sensor {Id = "Bottom Left (0x1C)", Temperature = sensorData5},
+            new Sensor {Id = "Bottom Right (0x1E)", Temperature = sensorData6}
         };
 
+        [Route("sensors/retrieve")]
         [HttpGet]
         [EnableCors(origins: "*", headers: "*", methods: "*")]
         public IEnumerable<Sensor> Retrieve()
@@ -26,11 +37,17 @@ namespace ServerSide.Controllers
             return sensors;
         }
 
+        [Route("sensors/update/{value1}/{value2}/{value3}/{value4}/{value5}/{value6}")]
         [HttpGet]
         [EnableCors(origins: "*", headers: "*", methods: "*")]
-        public void Update()
+        public void Update(double value1, double value2, double value3, double value4, double value5, double value6)
         {
-            sensorData = 58.43;
+            sensorData1 = value1;
+            sensorData2 = value2;
+            sensorData3 = value3;
+            sensorData4 = value4;
+            sensorData5 = value5;
+            sensorData6 = value6;
         }
     }
 }
