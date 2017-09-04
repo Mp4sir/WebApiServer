@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>ServerSide</title>
+    <title>Thermal Chamber</title>
 </head>
 <body>
-    <div>
-        <h2>Sensors</h2>
-        <ul id="sensors" />
-    </div>
+        <Center><h1><font face="verdana" color="#696969">Thermal Chamber</font></h1></Center>
+        <Center><ul style="list-style-type:none" id="sensors" /></Center>
     <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.min.js"></script>
     <script>
-    var uri = 'api/sensors/retrieve';
+    var uri = 'sensors/retrieve';
 
     $(document).ready(function () {
       // Send an AJAX request
@@ -19,15 +17,15 @@
             // On success, 'data' contains a list of sensors.
             $.each(data, function (key, item) {
               // Add a list item for the product.
-              $('<li>', { text: formatItem(item) }).appendTo($('#sensors'));
+              $('<li>',{ text: formatItem(item) }).appendTo($('#sensors'));
             });
           });
     });
 
     function formatItem(item) {
-        return item.Temperature;
+        return item.Id + ": " + item.Temperature + "C";
         }
-        setTimeout("window.location.reload();", 5000);
+        setTimeout("window.location.reload();", 1000);
     </script>
 </body>
 </html>
