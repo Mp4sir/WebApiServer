@@ -1,3 +1,7 @@
+//Hoseok(Alex) Lee
+//This controller holds the actual data of the sensors
+//It contains the HTTPGET methods which allow communication with the Raspberry Pi 3
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
